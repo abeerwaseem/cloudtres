@@ -13,17 +13,17 @@ class CreateUserServersTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_servers', function (Blueprint $table) {
+        Schema::create('user_server', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned();
             $table->integer('server_id')->unsigned();
             $table->integer('image_id')->unsigned();
-            $table->string('name');
-            $table->string('public_ip');
-            $table->string('private_ip');
+            $table->string('name')->nullable();
+            $table->string('public_ip')->nullable();
+            $table->string('private_ip')->nullable();
             $table->string('username')->nullable();
             $table->string('password')->nullable();
-            $table->enum('status',['start', 'reboot', 'stop', 'terminate', 'pause']);
+            $table->enum('status',['start', 'reboot', 'stop', 'terminate', 'pause', 'pending'])->default('pending');
             $table->softDeletes($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });

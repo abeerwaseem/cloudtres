@@ -13,7 +13,7 @@ class CreateImagesVendorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('images_vendors', function (Blueprint $table) {
+        Schema::create('image_vendor', function (Blueprint $table) {
             $table->id();
             $table->integer('image_id')->unsigned();
             $table->integer('vendor_id')->unsigned();
